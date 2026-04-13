@@ -308,6 +308,7 @@
             overflow: hidden;
             padding-top: 100px;
             padding-bottom: 100px;
+            height: 100vh;
         }
 
         .news-section::before {
@@ -403,6 +404,82 @@
             color: #555;
             margin-bottom: 8px;
             line-height: 1.6;
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .site-card {
+            display: block;
+            background: rgba(255, 255, 255, 0.96);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 22px;
+            padding: 24px;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+            transition: all 0.3s ease;
+            min-height: 160px;
+        }
+
+        .site-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .site-card h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .site-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .site-card .site-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 18px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 999px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .site-card .site-button:hover {
+            background: linear-gradient(135deg, #5465d1 0%, #5c3e9b 100%);
+        }
+
+        #creations {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%),
+                        url('img/bedniy.png') center/cover fixed;
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        #creations .section-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .site-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 18px;
+            margin-bottom: 16px;
         }
 
         .dog-info {
@@ -664,6 +741,7 @@
             <li><a href="#shop">Магазин</a></li>
             <li><a href="#media">Видео</a></li>
             <li><a href="#news">Новости</a></li>
+            <li><a href="#creations">Мои сайты</a></li>
         </ul>
     </nav>
 
@@ -983,8 +1061,43 @@
                     </div>
                     <div class="container-card news-card">
                         <h2><span class="emoji">✨</span> Обновления</h2>
-                        <p>Вчера был создан этот сайт для Тик Ток контента с информации про Флипа, про меня и с моим мерчем.</p>
+                        <p>12.04.2026 был создан этот сайт для Тик Ток контента с информации про Флипа, про меня и с моим мерчем.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="creations">
+            <div class="section-content">
+                <h2 class="section-title">🌐 Мои сайты</h2>
+                <p style="text-align: center; color: white; max-width: 900px; margin: 0 auto; font-size: 18px; margin-bottom: 30px;">
+                    Здесь вы найдете мои личные проекты и сайты, связанные с Флипом. Нажмите на карточку, чтобы перейти к странице.
+                </p>
+                <div class="link-grid">
+                    <a href="https://dmitriussim.github.io/FlipChatEnglish" target="_blank" class="site-card">
+                        <img src="img/screenshots/1.png" alt="Мой сайт 1">
+                        <h2>Flip Chat</h2>
+                        <p>Мой первый мессенджер в стиле Флипа. Общаться можно. Если хочешь написать кому то - пиши.</p>
+                        <span class="site-button">Перейти</span>
+                    </a>
+                    <a href="https://dmitriussim.github.io/flipos/" target="_blank" class="site-card">
+                        <img src="img/screenshots/2.png" alt="Мой сайт 2">
+                        <h2>FlipOS</h2>
+                        <p>Мой самый ФЛИПОВСКИЙ проект этого года. НО, думаю этот сайт про меня и флипа сильнее :)</p>
+                        <span class="site-button">Перейти</span>
+                    </a>
+                    <a href="https://dmitriussim.github.io/flipsniffer/" target="_blank" class="site-card">
+                        <img src="img/screenshots/3.png" alt="Мой сайт 3">
+                        <h2>FlipSniffer/FlipQuest</h2>
+                        <p>Простая игра про моего Флипчика и про его друга ПАУКА из Майнкрафта. Уклоняйся, нюхай программы. Если попадешься пауку.... Не поздаровится.</p>
+                        <span class="site-button">Перейти</span>
+                    </a>
+                    <a href="#" target="_blank" class="site-card">
+                        <img src="img/screenshots/4.png" alt="Мой сайт 4">
+                        <h2>BEDNIYSHOP</h2>
+                        <p>Мой первый сайт про Флипа, тогда был туповат немного, поэтому такой дедовский стиль.</p>
+                        <span class="site-button">Перейти</span>
+                    </a>
                 </div>
             </div>
         </section>
