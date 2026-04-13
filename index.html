@@ -191,11 +191,149 @@
 
         .full-screen-section.shop {
             background: linear-gradient(135deg, #ffa502 0%, #ff6b6b 100%);
+            min-height: 115vh;
+            height: auto;
+            overflow: visible;
         }
 
         .full-screen-section.shop::before {
             background-image: url('img/4.png');
             opacity: 0.2;
+        }
+
+        .content-section {
+            width: 100%;
+            padding: 100px 40px 80px;
+        }
+
+        .content-section .section-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .iframe-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.92) 0%, rgba(118, 75, 162, 0.92) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .iframe-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/6.png') center/cover no-repeat;
+            opacity: 0.18;
+            z-index: 0;
+        }
+
+        .iframe-section .section-content {
+            position: relative;
+            z-index: 2;
+            padding: 0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+
+        @media (max-width: 1280px) {
+            .video-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 860px) {
+            .video-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-card blockquote {
+            margin: 0;
+            width: 100%;
+            min-height: 140px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            background: rgba(255, 255, 255, 0.96);
+            color: #333;
+            font-size: 15px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .responsive-iframe {
+            width: 100%;
+            min-height: 220px;
+            border: none;
+            display: block;
+        }
+
+        .news-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.92) 0%, rgba(118, 75, 162, 0.92) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .news-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/5.png') center/cover no-repeat;
+            opacity: 0.18;
+            z-index: 0;
+        }
+
+        .news-section .section-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .news-section .container-card {
+            min-height: 220px;
+            background: rgba(255, 255, 255, 0.94);
+        }
+
+        .news-section .container-card h2 {
+            margin-bottom: 12px;
         }
 
         .section-content {
@@ -524,6 +662,8 @@
             <li><a href="#about-flip">О Флипе</a></li>
             <li><a href="#about-dmitri">О Мне</a></li>
             <li><a href="#shop">Магазин</a></li>
+            <li><a href="#media">Видео</a></li>
+            <li><a href="#news">Новости</a></li>
         </ul>
     </nav>
 
@@ -784,6 +924,67 @@
                 <div class="beta-warning" style="margin-top: 50px;">
                     <strong>⚠️ ВНИМАНИЕ!</strong><br>
                     Этот раздел все еще находится в разработке. Функция покупок и оплаты будут доступны вскоре! Спасибо за вашу поддержку!
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section iframe-section" id="media">
+            <div class="section-content">
+                <h2 class="section-title">🌐 Видео о Флипе</h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7627949439629430038" data-video-id="7627949439629430038" style="max-width: 605px;min-width: 140px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <p></p> <a target="_blank" title="♬ original sound - DmitriusSim" href="https://www.tiktok.com/music/original-sound-7627949451923098390?refer=embed">♬ original sound - DmitriusSim</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7627936574088465686" data-video-id="7627936574088465686" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <p></p> <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/music/original-sound-7510448610367212334?refer=embed">♬ original sound</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7627557277758754050" data-video-id="7627557277758754050" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <a title="capcut" target="_blank" href="https://www.tiktok.com/tag/capcut?refer=embed">#CapCut</a> <a target="_blank" title="♬ original sound  - ☢️AT0M!C |⚡Fourthx_x10🌠" href="https://www.tiktok.com/music/original-sound-☢️AT0MC-⚡Fourthxx10🌠-7625899964401142536?refer=embed">♬ original sound  - ☢️AT0M!C |⚡Fourthx_x10🌠</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7610386266865044759" data-video-id="7610386266865044759" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <a title="capcut" target="_blank" href="https://www.tiktok.com/tag/capcut?refer=embed">#CapCut</a> <a target="_blank" title="♬ original sound - Emmy_🐾🐾" href="https://www.tiktok.com/music/original-sound-7595307142963301142?refer=embed">♬ original sound - Emmy_🐾🐾</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7606760879979285782" data-video-id="7606760879979285782" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <p>ЕСЛИ БЫ ФЛИП БЫЛ БЫ В МАГАЗИНЕ — ПАРОДИЯ </p> <a target="_blank" title="♬ original sound - DmitriusSim" href="https://www.tiktok.com/music/original-sound-7606760892854291222?refer=embed">♬ original sound - DmitriusSim</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7606666046581247254" data-video-id="7606666046581247254" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <p></p> <a target="_blank" title="♬ Get Pugged - G3tPugg3d" href="https://www.tiktok.com/music/Get-Pugged-7094355764231310086?refer=embed">♬ Get Pugged - G3tPugg3d</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7603301466014600470" data-video-id="7603301466014600470" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> @Eurovision <a target="_blank" title="♬ original sound - Eurovision" href="https://www.tiktok.com/music/original-sound-7538577297872947990?refer=embed">♬ original sound - Eurovision</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7601486383802289430" data-video-id="7601486383802289430" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <p></p> <a target="_blank" title="♬ оригинальный звук - NjoYFox" href="https://www.tiktok.com/music/оригинальный-звук-7592680509298412306?refer=embed">♬ оригинальный звук - NjoYFox</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7601426422460124438" data-video-id="7601426422460124438" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <p></p> <a target="_blank" title="♬ Minecraft - C418" href="https://www.tiktok.com/music/Minecraft-6943027358655842305?refer=embed">♬ Minecraft - C418</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                    <div class="video-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dmitriussim/video/7601233084629011734" data-video-id="7601233084629011734" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@dmitriussim" href="https://www.tiktok.com/@dmitriussim?refer=embed">@dmitriussim</a> <p></p> <a target="_blank" title="♬ original sound - Eurovision" href="https://www.tiktok.com/music/original-sound-7513885955523201814?refer=embed">♬ original sound - Eurovision</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section news-section" id="news">
+            <div class="section-content">
+                <h2 class="section-title">📰 Новости о Флипе</h2>
+                <div class="containers-grid">
+                    <div class="container-card news-card">
+                        <h2><span class="emoji">🐾</span> Свежие истории</h2>
+                        <p><span style="font-weight: 700;">Флип и его гавкание.</span>
+                            <br>
+                            Мы ехали в пятницу (10.04.2026) в Латвию. Флип вроде был спокойным. Когда приехали в апартаменты, Флип начал бесится и гавкать. В субботу(11.04.2026) он вообще гавкал на мою маму с сестрой. Вот так :)
+                        </p>
+                    </div>
+                    <div class="container-card news-card">
+                        <h2><span class="emoji">📸</span> Фото и видео</h2>
+                        <p><img src="img/4.png" alt="" style="height: 238px; text-align: center; display: flex; align-items: center; border-radius: 20px; border: 4px solid #764ba2"></p>
+                    </div>
+                    <div class="container-card news-card">
+                        <h2><span class="emoji">✨</span> Обновления</h2>
+                        <p>Вчера был создан этот сайт для Тик Ток контента с информации про Флипа, про меня и с моим мерчем.</p>
+                    </div>
                 </div>
             </div>
         </section>
