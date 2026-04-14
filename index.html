@@ -632,6 +632,129 @@
         .buy-button:active {
             transform: translateY(-1px);
         }
+        hr {
+            width: 3px;
+            height: 30px;
+            background-color: #667eea;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* MODAL STYLES */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: url("img/3.png") center/cover no-repeat;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: white;
+        }
+
+        #modal-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        #auth-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #auth-form label {
+            color: white;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #auth-form input {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(111, 45, 7, 0.9);
+            color: white;
+        }
+
+        #auth-form input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        #auth-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #auth-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* MOBILE MODAL */
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 10% auto;
+                padding: 20px;
+                width: 95%;
+                max-width: none;
+            }
+
+            #modal-title {
+                font-size: 20px;
+            }
+
+            #auth-form input {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            #auth-submit {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
 
         /* TIKTOK BUTTON */
         .tiktok-button {
@@ -722,7 +845,7 @@
 
             .news-section .container-card {
                 min-height: 180px;
-                padding: 16px;
+                padding: 16px; 
             }
 
             .news-section .container-card h2 {
@@ -899,6 +1022,153 @@
             }
         }
     </style>
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCCjB78WbuOr1u7bdSYq7-F5wzIZUs2cMc",
+            authDomain: "flipushka.firebaseapp.com",
+            projectId: "flipushka",
+            storageBucket: "flipushka.firebasestorage.app",
+            messagingSenderId: "833708594798",
+            appId: "1:833708594798:web:862a6e37c09591a339f87f",
+            measurementId: "G-3Y4S6V51MX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Elements
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const logoText = document.querySelector('.logo-text');
+        const modal = document.getElementById('auth-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const usernameField = document.getElementById('username-field');
+        const authForm = document.getElementById('auth-form');
+        const closeBtn = document.querySelector('.close');
+        let isSignup = false;
+
+        // Show modal
+        function showModal(signup = false) {
+            isSignup = signup;
+            modalTitle.textContent = signup ? 'Зарегистрироваться' : 'Войти';
+            usernameField.style.display = signup ? 'block' : 'none';
+            document.getElementById('auth-submit').textContent = signup ? 'Зарегистрироваться' : 'Войти';
+            modal.style.display = 'block';
+        }
+
+        // Hide modal
+        function hideModal() {
+            modal.style.display = 'none';
+            authForm.reset();
+        }
+
+        // Login function
+        function login(event) {
+            event.preventDefault();
+            showModal(false);
+        }
+
+        // Signup function
+        function signup(event) {
+            event.preventDefault();
+            showModal(true);
+        }
+
+        // Form submit
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value;
+
+            if (isSignup) {
+                if (email && password && username) {
+                    createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            const user = userCredential.user;
+                            return updateProfile(user, { displayName: username });
+                        })
+                        .then(() => {
+                            hideModal();
+                            updateUI(username);
+                        })
+                        .catch((error) => {
+                            alert('Ошибка регистрации: ' + error.message);
+                        });
+                }
+            } else {
+                if (email && password) {
+                    signInWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            const user = userCredential.user;
+                            hideModal();
+                            updateUI(user.displayName || user.email);
+                        })
+                        .catch((error) => {
+                            alert('Ошибка входа: ' + error.message);
+                        });
+                }
+            }
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', hideModal);
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+
+        // Update UI
+        function updateUI(displayName) {
+            logoText.textContent = displayName;
+            loginBtn.style.display = 'none';
+            signupBtn.style.display = 'none';
+            logoutBtn.style.display = 'inline';
+        }
+
+        // Logout function
+        function logout() {
+            signOut(auth).then(() => {
+                logoText.textContent = 'ФЛИП';
+                loginBtn.style.display = 'inline';
+                signupBtn.style.display = 'inline';
+                logoutBtn.style.display = 'none';
+                alert('Вы вышли из аккаунта');
+            });
+        }
+
+        // Auth state observer
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                updateUI(user.displayName || user.email);
+            } else {
+                logoText.textContent = 'ФЛИП';
+                loginBtn.style.display = 'inline';
+                signupBtn.style.display = 'inline';
+                logoutBtn.style.display = 'none';
+            }
+        });
+
+        // Event listeners
+        loginBtn.addEventListener('click', login);
+        signupBtn.addEventListener('click', signup);
+        logoutBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            logout();
+        });
+    </script>
 </head>
 <body>
     <!-- НАВИГАЦИЯ -->
@@ -915,6 +1185,10 @@
             <li><a href="#media">Видео</a></li>
             <li><a href="#news">Новости</a></li>
             <li><a href="#creations">Мои сайты</a></li>
+            <hr>
+            <li><a href="#" id="login-btn">Войти</a></li>
+            <li><a href="#" id="signup-btn">Зарегистрироваться</a></li>
+            <li><a href="#" id="logout-btn" style="display: none;">Выйти</a></li>
         </ul>
     </nav>
 
@@ -1278,5 +1552,24 @@
 
     <!-- TIKTOK BUTTON -->
     <a href="https://www.tiktok.com/@DmitriusSim" target="_blank" class="tiktok-button" title="Подписывайтесь на мой TikTok!">🎵</a>
+
+    <!-- MODAL FOR LOGIN/SIGNUP -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Войти</h2>
+            <form id="auth-form">
+                <div id="username-field" style="display: none;">
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" required>
+                <button type="submit" id="auth-submit">Войти</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
